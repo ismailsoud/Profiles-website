@@ -1,0 +1,333 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <style>
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: montserrat;
+}
+
+nav{
+  background: linear-gradient(-135deg, #1897e6, #232a4e);
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+}
+label.logo{
+  color: white;
+  font-size: 30px;
+  line-height: 40px;
+  padding: 0 100px;
+  font-weight: bold;
+}
+.dropdown{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+ border-radius: 50px;
+ border: 1px solid white;
+ width:55px;
+ margin-right: 30px; 
+ transition: all 0.3s ease;
+}
+.dropdown:active{
+  transform: scale(0.95);
+}
+.user-pic{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.dropdown i{
+  float: right;
+  font-size: 15px;
+  margin: 3px 10px;
+  color: #fff;
+}
+nav ul{
+  float:right;
+  margin-left: 550px;
+}
+nav ul li{
+  display: inline-block;
+  line-height: 40px;
+  margin: 0 5px;
+}
+nav ul li a{
+  color: white;
+  font-size: 15px;
+  padding: 0px 18px;
+  border-radius: 3px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+a.active,a:active{
+  background: #1b9bff;
+  padding: 3px 18px;
+  transition: .5s;
+}
+
+.log{
+  display: grid;
+  height: 100%;
+  width: 100%;
+  place-items: center;
+  /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
+}
+::selection{
+  background: #4158d0;
+  color: #fff;
+}
+
+.sub-menu-wrap{
+  position:absolute;
+  top:100%;
+  right:0;
+  width:320px;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.5s;
+}
+.sub-menu-wrap.open-menu{
+  max-height: 400px;
+}
+.sub-menu{
+  background: #fff;
+  padding: 20px;
+  margin:10px;
+}
+.user-info{
+  display:flex;
+  align-items: center;
+}
+.user-info h3{
+font-weight: 500;
+}
+.user-info img{
+  width:60px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.sub-menu hr{
+  border:0;
+  height: 1px;
+  width:100%;
+  background: #ccc;
+  margin:15px 0 10px;
+}
+.sub-menu-link{
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  color:#525252;
+  margin: 12px 0;
+}
+.sub-menu-link p{
+  padding: 10px;
+  font-size: 15px;
+  width: 100%;
+}
+.sub-menu-link img{
+  width:40px;
+  background: #e5e5e5;
+  border-radius: 50%;
+  padding: 10px;
+  margin-right:15px;
+}
+.sub-menu-link span{
+  padding: 8px;
+  font-size: 18px;
+  transition: transform 0.5s;
+}
+.sub-menu-link:hover span{
+  transform: translateX(5px);
+}
+.sub-menu-link:hover p{
+  font-weight: 600;
+}
+.login{
+  width: 380px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+}
+.first{
+  min-height: 90vh;
+  background-image:url("{% static 'images/home.jpg'%}");
+  background-repeat: no-repeat; 
+  background-size: 100% 100%;
+}
+.second{
+    margin-top: 10px;
+    border-radius: 10px;
+    min-height: 70vh;
+    background-image:url("{% static 'images/groups.jpg'%}");
+    background-repeat: no-repeat; 
+    background-size: 100% 100%;
+}
+.second h1{
+  padding: 10px 0 0 10px;
+}
+.second table{
+   float:right;
+   margin-top: 20px;
+   margin-right: 50px;
+   font-size: 15px;
+   border-collapse: collapse;
+   width:35%;
+}
+.second table th,td{
+   border: 2px solid #cfcece;
+   padding: 10px;
+   text-align: center;
+}
+.second table tr:nth-child(even){
+   background-color: #fefefe;
+}
+.second table tr:nth-child(odd){
+   background-color: #faa3a3;
+}
+.second table th{
+   background-color: #d12c08;
+}
+.third{
+  margin-top: 15px;
+  border-radius: 15px;
+  min-height: 60vh;
+  background-image:url("{% static 'images/register.jpg'%}");
+  background-repeat: no-repeat; 
+  background-size: 100% 100%;
+}
+.third h1{
+  padding: 40px 0 0 10px;
+}
+.third ul{
+  margin:40px 0 0 40px;
+  border-radius: 10px;
+  list-style-type: square;
+  background:rgba(175, 230, 247, 0.8);
+  padding: 30px 0 30px 50px;
+  width: 43%;
+}
+.third ul li{
+  font-size: 18px;
+  font-weight: 400;
+  padding: 10px 0 0 0;
+}
+.fourth{
+  min-height:5vh;
+  background:rgb(127, 126, 126);
+}
+.fourth p{
+  font-size: 15px;
+  text-align: center;
+  padding: 5px;
+  color: rgb(0, 0, 0);
+}
+.container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .profile-card {
+            width: 250px;
+            margin: 10px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .profile-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .profile-card h3 {
+            margin-bottom: 5px;
+        }
+
+        .profile-card p {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+  <body>
+    <div class="navbar">
+    <nav>
+      <label class="logo">DevProfiles</label>
+      <div class="dropdown" onclick="change()">
+      <img src="{{object.photo.url}}" class="user-pic" >
+      <i class="fas fa-angle-down"></i></div>
+      <div class="sub-menu-wrap" id="submenu">
+        <div class="sub-menu">
+           <div class="user-info">
+            <img src="{{object.photo.url}}">
+            <h3>{{object.name}}</h3>
+           </div>
+           <hr>
+           <a href="{% url 'profile' %}" class="sub-menu-link">
+            <img src="{% static 'images/user.png'%}">
+            <p>My profile</p>
+            <span><i class='fas fa-angle-right'></i></span>
+           </a>
+           <a href="{% url 'edit' %}" class="sub-menu-link">
+            <img src="{% static 'images/edit.png'%}">
+            <p>Edit profile</p>
+            <span><i class='fas fa-angle-right'></i></span>
+           </a>
+           <a href="{% url 'logout' %}" class="sub-menu-link">
+            <img src="{% static 'images/logout.png'%}">
+            <p>Logout</p>
+            <span><i class='fas fa-angle-right'></i></span>
+           </a>
+           <form action="{% url 'dellProfile' %}" method="POST" enctype="multipart/form-data" class="sub-menu-link">
+            {% csrf_token %}
+            <input type="hidden" name="userid" value="{{ object.email }}">
+            <img src="{% static 'images/logout.png'%}">
+            <button type="submit">Delete Profile</button>
+        </form>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+  <section>
+    <div class="container">
+        {% for user in users %}
+        <div class="profile-card">
+            <img src="{{ user.photo.url }}" alt="Profile Picture">
+            <h3>{{ user.name }}</h3>
+            <h4>{{ user.email }}</h4>
+            <p>{{ user.about }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+</body>
+<script>
+  let subMenu=document.getElementById("submenu");
+  function change(){
+      subMenu.classList.toggle("open-menu");
+  }
+</script>
+</html>
